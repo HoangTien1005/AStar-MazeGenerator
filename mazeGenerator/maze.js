@@ -17,7 +17,7 @@ const stack = [];
 
 const grid = new Array(COLS);
 
-const finish = false;
+let finish = false;
 
 let current;
 let end;
@@ -152,16 +152,18 @@ function draw() {
   }
 
   if (stack.length == 0) {
-    replayBtn = createButton("Done! Play again");
-    replayBtn.position(replayBtnX, replayBtnY);
-    
-    noLoop();
-
-    replayBtn.mousePressed(function () {
-      window.location.reload();
-    });
 
     
+    
+    if(finish) {
+      replayBtn = createButton("Done! Play again");
+      replayBtn.position(replayBtnX, replayBtnY);
+      noLoop();
+      replayBtn.mousePressed(function () {
+        window.location.reload();
+      });
+    }
+    finish = true;
   }
 
   stroke(0);
